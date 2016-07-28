@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "snake_and_ladder"
   spec.version       = SnakeAndLadder::VERSION
   spec.authors       = ["manuraj"]
-  spec.email         = ["manuraj@in.ibm.com"]
+  spec.email         = ["manu.elayath@gmail.com"]
 
   spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
   spec.description   = %q{TODO: Write a longer description or delete this line.}
