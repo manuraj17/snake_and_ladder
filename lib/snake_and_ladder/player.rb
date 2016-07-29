@@ -1,15 +1,16 @@
+# The 'Player' class, this handles the initialization and holds each player
+# for the game
 class Player
-  attr_reader :id, :name
+  attr_accessor :id, :name, :won, :position
 
   def initialize(id, name)
+    # Only alphanumeric names of length between 3 and 9 are allowed
+    if /^([a-zA-Z0-9_]){3,9}$/.match(name).nil?
+      raise ArgumentError.new("Invalid name")
+    end
     @id = id
     @name = name
-    @position = 0
+    @position = 1
     @won = false
   end
-  # Player will have the id as player 1 etc
-  # Player will have the current position
-  # Player will have the status won or not
-
-  # Initial position of every player is 0/1
 end

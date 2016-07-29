@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/snake_and_ladder'
+SnakeAndLadder.start()

@@ -1,8 +1,11 @@
 # SnakeAndLadder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/snake_and_ladder`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem comprises the 'Snake and Ladder' in a terminal version.
+Totally playable from the terminal between multiple people. The game does not end until all have finished.
 
-TODO: Delete this and the text above, and describe your gem
+The board is configured using a config file located in `lib/snake_and_ladder/config.json`
+
+Enjoy!
 
 ## Installation
 
@@ -22,8 +25,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Creating game board
+  The board configuration should be stored in `config.json`. The file is pretty self explanatory. First you define the total cells, then two arrays for snake and ladder each. Each array contains entries for each snake and ladder.
 
+  While defining a snake, make sure the position of head of the snake is greater than the tail of the snake. This has been made so that to justify the fact that snakes gets you down to a lower level.
+
+### Running the game
+
+  Create a file as the following and run
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
@@ -32,7 +41,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/snake_and_ladder.
+Bug reports and pull requests are welcome on GitHub at https://github.com/manuraj17/snake_and_ladder.
 
 
 ## License

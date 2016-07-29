@@ -1,0 +1,17 @@
+{
+  "total_cells": "100",
+  "snakes" : [
+    {
+      "cell": "10",
+      "head": "10",
+      "tail": "5"
+    }
+  ],
+  "ladders": [
+    {
+      "cell": "20",
+      "start": "20",
+      "end" : "100"
+    }
+  ]
+}
