@@ -5,10 +5,12 @@ class Game
   attr_accessor :no_of_players, :board
   def initialize(no_of_players)
     @no_of_players = no_of_players
-    @board = Board.new
-    @board.initialise_entities
   end
 
+  def init_board
+    @board = Board.new
+    @board.setup
+  end
   # Initialising each player for the game
   def init_players
     @players = []
@@ -60,10 +62,10 @@ class Game
           next
         elsif entity.eql?('snake')
           puts "#{p.name} has encountered a snake at position"\
-                "#{start_position}, will now move to #{end_position}"
+                " #{start_position}, will now move to #{end_position}"
         else
           puts "#{p.name} has reached a ladder at position"\
-                "#{start_position}, will now move to #{end_position}"
+                " #{start_position}, will now move to #{end_position}"
         end
 
         # Placing the player at the target end position

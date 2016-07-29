@@ -28,23 +28,43 @@ class TestSnakeAndLadder < Test::Unit::TestCase
   end
 
 
-  def test_invalid_config
-    c1 = Cell.new
-    c1.set_entity('snake', '5', '5')
-    c2 = Cell.new
-    c2.set_entity('ladder', '5','5')
-    puts "testing config"
-    puts @game.board.cells[0].nil?
-    @game.board.cells[0] = c1
-    puts @game.board.cells[0].nil?
+  def test_invalid_config_snake
+    b = Board.new
+    b.total_cells = 100
     assert_raise ArgumentError do
-      @game.board.cells[0] = c2
+      b.set_entity('snake', '3', '5')
     end
   end
 
-  def test_valid_config
+  def test_invalid_config_ladder
+    b = Board.new
+    b.total_cells = 100
+    assert_raise ArgumentError do
+      b.set_entity('ladder', '9', '2')
+    end
+  end
+
+  def test_valid_config_snake
+    b = Board.new
+    b.total_cells = 100
     assert_nothing_raised ArgumentError do
+      b.set_entity('snake', '30','10')
     end
   end
 
+  def test_valid_config_ladder
+    b = Board.new
+    b.total_cells = 100
+    assert_nothing_raised ArgumentError do
+      b.set_entity('ladder', '5','10')
+    end
+  end
+
+  def test_check_position
+    b = Board.new
+    b.total_cells = 100
+    b.set_entity('snake', '30','10')
+    assert_equal([nil,nil,nil], b.check(10))
+    assert_equal(['snake','30','10'], b.check(30))
+  end
 end

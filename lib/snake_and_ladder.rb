@@ -12,6 +12,7 @@ module SnakeAndLadder
     number_of_players = gets.chomp.to_i
     game = Game.new(number_of_players)
     game.init_players
+    game.init_board
     game.play
   end
 end
