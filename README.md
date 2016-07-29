@@ -1,38 +1,31 @@
 # SnakeAndLadder
 
 This gem comprises the 'Snake and Ladder' in a terminal version.
-Totally playable from the terminal between multiple people. The game does not end until all have finished.
+Totally playable from the terminal between multiple people. The game does not end until all the players have completed the game.
 
-The board is configured using a config file located in `lib/snake_and_ladder/config.json`
+Board configuration can be custom set by the players, it is explained below.
 
 Enjoy!
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Download the gemfile and execute the command below:
 
-```ruby
-gem 'snake_and_ladder'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
 
     $ gem install snake_and_ladder
 
 ## Usage
 
 ### Creating game board
-  The board configuration should be stored in `config.json`. The file is pretty self explanatory. First you define the total cells, then two arrays for snake and ladder each. Each array contains entries for each snake and ladder.
+  The board configuration should be stored in `config.json`. The file should reside in the same directory as from where you are exeuting. If the file is not found, default configuration will be used. The file is pretty self explanatory. First you define the total cells, then two arrays for snake and ladder each. Each array contains entries for each snake and ladder.
 
   While defining a snake, make sure the position of head of the snake is greater than the tail of the snake. This has been made so that to justify the fact that snakes gets you down to a lower level.
 
 ### Running the game
+You can execute the game from terminal using
 
-  Create a file as the following and run
+    $ snl
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

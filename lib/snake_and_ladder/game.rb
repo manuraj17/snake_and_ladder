@@ -2,10 +2,11 @@
 # 'Player' and 'Board'. This class controls the flow of the game and has the
 # 'play' method which is where the game is actually being played.
 class Game
-  attr_accessor :no_of_players
+  attr_accessor :no_of_players, :board
   def initialize(no_of_players)
     @no_of_players = no_of_players
     @board = Board.new
+    @board.initialise_entities
   end
 
   # Initialising each player for the game

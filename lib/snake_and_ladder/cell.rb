@@ -1,22 +1,23 @@
 # The 'Cell' class. This handles each cell block of the board, whether it is a
 # ladder or a snake.
 class Cell
-  attr_reader :snake, :ladder, :start, :end
+  attr_accessor :snake, :ladder, :start, :end
   def initialize()
     @snake = false
     @ladder = false
     @start_position = 0
     @end_position = 0
+    @cells = []
   end
   # Setting the cell block as snake or ladder
   def set_entity(entity, start_position, end_position)
+    if !@cell[start_position].nil?
+      raise ArgumentError.new 'An entity already exists in this cell'
+    end
     if entity.eql?('snake')
-      puts "initing snake"
       @snake = true
-      puts "#{@snake}"
     elsif entity.eql?('ladder')
       # A snake cell cannot be a ladder cell
-      puts "Init ladder, snake val: #{@snake}"
       if @snake
           raise ArgumentError.new("Config Error, block alread set for snake"\
                                    "#{start_position}")

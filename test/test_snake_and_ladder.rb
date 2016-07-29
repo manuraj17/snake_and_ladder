@@ -29,19 +29,21 @@ class TestSnakeAndLadder < Test::Unit::TestCase
 
 
   def test_invalid_config
-    c = Cell.new
+    c1 = Cell.new
+    c1.set_entity('snake', '5', '5')
+    c2 = Cell.new
+    c2.set_entity('ladder', '5','5')
+    puts "testing config"
+    puts @game.board.cells[0].nil?
+    @game.board.cells[0] = c1
+    puts @game.board.cells[0].nil?
     assert_raise ArgumentError do
-      c.set_entity('snake', '5', '5')
-      c.set_entity('ladder', '5','5')
+      @game.board.cells[0] = c2
     end
   end
 
   def test_valid_config
-    c1 = Cell.new
-    c2 = Cell.new
-    assert_nothing_raise ArgumentError do
-      c1.set_entity('snake', '5', '5')
-      c2.set_entity('ladder', '5','5')
+    assert_nothing_raised ArgumentError do
     end
   end
 
