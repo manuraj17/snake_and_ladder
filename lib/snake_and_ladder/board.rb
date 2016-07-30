@@ -11,16 +11,21 @@ class Board
     begin
       @cells = []
       @total_cells = nil
+      @config = []
+      # Check if a config file is present in the current directory from which
+      # the program is executed
       if File.file?("#{Dir.pwd}/config.json")
-        puts "Using user provided board config"
-        @config = JSON.parse(File.read("#{Dir.pwd}/config.json"))
-          else
+        puts "Config file found in current directory, use it? (y/n)"
+        choice = gets.chomp.downcase
+        # Parse the file if the user wants to use the detected config file
+        if choice.downcase.eql?('y')
+          @config = JSON.parse(File.read("#{Dir.pwd}/config.json"))
+        end
+      else
         puts "No board config file found, please enter board details to start game"
-        # @config = JSON.parse(File.read(File.expand_path("../../config.json", __FILE__)))
-        @config = []
       end
     rescue Exception => e
-      raise "Error, file not found!: #{e}"
+      raise "Error #{e}"
     end
   end
 
@@ -53,11 +58,13 @@ class Board
 
   # Setting the entity on specifc cells
   def set_entity(entity, start_position, end_position)
+    # Raise an error if the position is already filled
     unless @cells[start_position.to_i].nil?
       raise ArgumentError.new 'An entity already exists in this position'
     end
+    # Check if the positions are within range
     if !start_position.to_i.between?(0, @total_cells) || !end_position.to_i.between?(0, @total_cells)
-      raise ArgumentError.new 'Error, invalid position'
+      raise ArgumentError.new 'Error, invalid positions'
     end
     e = Cell.new
     if entity.eql?('snake')
@@ -66,8 +73,6 @@ class Board
       if start_position.to_i <= end_position.to_i
         raise ArgumentError.new 'Error, snake head position must be greater than tail'
       end
-
-      # Checking if positions are valid for the board
 
     elsif entity.eql?('ladder')
       e.ladder = true
@@ -104,7 +109,7 @@ class Board
   def check(position)
     if @cells[position].nil?
       # return nil if the cell holds no entity
-      return nil, nil, nil
+      return 'empty', nil, nil
     elsif @cells[position].snake
       return 'snake', @cells[position].start, @cells[position].end
     elsif @cells[position].ladder

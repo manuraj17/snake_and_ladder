@@ -64,7 +64,7 @@ class TestSnakeAndLadder < Test::Unit::TestCase
     b = Board.new
     b.total_cells = 100
     b.set_entity('snake', '30','10')
-    assert_equal([nil,nil,nil], b.check(10))
+    assert_equal(['empty',nil,nil], b.check(10))
     assert_equal(['snake','30','10'], b.check(30))
   end
 end
